@@ -16,26 +16,32 @@
 </nav>
 
 <div class="container">
-
         <h1>Processo Eleitoral - Cipa</h1>
         <h2>Gestão - 2022/2023</h2>
-
     <hr/>
     <h3>Lista de Candidatos e seus votos em ordem do mais votado para o menos votado.</h3>
+
+@if($admin == '12202526625' || $admin == '06737124607')
     @foreach($dados as $candidato)
         <h4><ul>{{ $candidato->name }} = <b>{{ $candidato->votos }}</b></ul></h4>
     @endforeach
     <hr>
 
-    <h3>Porcentagem total de votos válidos - <b>{{number_format($porcentagem,2,',','.') }} %</b></h3>
+    <h3>Porcentagem total de votos válidos : <b>{{number_format($porcentagem,2,',','.') }} %</b></h3>
     <h3>Total de Colaboradores na Empresa : <b>{{ $contcola }}</b></h3>
     <hr>
     <h3>Total e Listagem de colaboradores que ja votaram : <b>{{ $cont }}</b></h3>
-    @foreach($pessoas as $pessoa)
-        <h5><li>{{ $pessoa->name }}</li></h5>
-    @endforeach
-
-</div>
+    </div>
+    <div class="content">
+        <div class="container">
+            @foreach($pessoas as $pessoa)
+                <h5><li>{{ $pessoa->name }}</li></h5>
+            @endforeach <br>
+            {{ $pessoas->links() }}
+            <hr>
+        </div>
+    </div>
+@endif
 
 </body>
 </html>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
@@ -11,7 +12,10 @@ class AdminController extends Controller
     {
         $dados = User::where('candidato','=',1)->get()
             ->sortByDesc('votos');
-        $pessoas = User::where('votou','=',1)->get();
+        $pessoas = User::where('votou','=',1)->paginate(10);
+
+        $admin = Auth::user()->username;
+
 
         $contador = User::select('id')->where('votou','=',1);
         $cont = $contador->count('id');
@@ -22,6 +26,6 @@ class AdminController extends Controller
         $porcentagem = ($cont * 100) / $contcola;
 
 
-        return view('admin.indexadmin', ['dados' => $dados, 'pessoas' => $pessoas, 'cont'=> $cont, 'contcola'=>$contcola, 'porcentagem'=>$porcentagem]);
+        return view('admin.indexadmin', ['dados' => $dados, 'pessoas' => $pessoas, 'cont'=> $cont, 'contcola'=>$contcola, 'porcentagem'=>$porcentagem, 'admin'=>$admin]);
     }
 }

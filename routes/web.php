@@ -17,10 +17,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('colaboradores', [ColaboradorController::class, 'store']);
 
 
@@ -34,10 +30,10 @@ Route::middleware('auth')->group(function(){
     Route::get('', [VotacaoController::class, 'index'])->name('votacao');
     Route::get('votacao/store/{id}',[VotacaoController::class, 'store'])->name('salvar');
     Route::get('votacao/final',[VotacaoController::class, 'index'])->name('final');
-
 });
 
 
-
 #admin
-Route::get('admin', [AdminController::class, 'index']);
+Route::middleware('auth')->group(function(){
+    Route::get('admin', [AdminController::class, 'index']);
+});
