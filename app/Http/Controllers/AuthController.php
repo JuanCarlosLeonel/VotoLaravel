@@ -28,7 +28,6 @@ class AuthController extends Controller
                 return redirect()->route('votacao');
             }else{
                 return redirect()->route('login');
-                // return response()->json('login falhou');
             }
         }
     }

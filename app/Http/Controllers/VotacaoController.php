@@ -14,9 +14,11 @@ class VotacaoController extends Controller
         $candidatos = User::where('candidato','=',1)->get()
             ->sortBy('id');
 
+        $usuario = Auth::user()->votou;
+
         $pessoa = Auth::user()->name;
 
-        return view('votacao.index', ['candidatos' => $candidatos, 'pessoa' => $pessoa]);
+        return view('votacao.index', ['candidatos' => $candidatos, 'pessoa' => $pessoa, 'usuario' =>$usuario]);
     }
 
     public function store($id)

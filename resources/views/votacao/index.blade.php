@@ -17,28 +17,22 @@
 </nav>
 
 <div class="container">
-    <div class="col-md-12">
-        <div class="pull-right">
-            <form action="{{ route('logout') }}" method="POST">
-                <div class="col-xs-6 text-center col-xs-offset-6">
-                    {{ csrf_field() }}
-                    <button onclick="if(!confirm('Deseja sair do sistema?')){return false}" class="btn btn-danger" type="submit" class="button">Sair</button>
-                </div>
-            </form>
-        </div>
+
 
     <h1>Processo Eleitoral - Cipa</h1>
         <h2>Gestão - 2022/2023</h2>
     <hr/>
         <h3>Bem vindo, {{ $pessoa }}</h3>
         <br>
+@if($usuario == true)
+    <h3>Você ja votou,obrigado pela participação.</h3>
+
+@endif
+@if($usuario == false)
         <h4>Escolha o candidato de sua preferência e clique em cima de seu nome para salvar o voto.</h4>
         <h4>Para votos brancos ou nulos basta clicar em seus respectivos botões.</h4>
     <hr>
-
     <br>
-
-
       <div class="form-group">
         <label for="candidato">CANDIDATOS :</label><hr>
         @foreach($candidatos as $candidato)
@@ -54,7 +48,7 @@
         </ul>
         @endforeach
       </div>
-
+@endif
 
 </div>
 

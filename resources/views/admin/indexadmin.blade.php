@@ -27,11 +27,17 @@
     @endforeach
     <hr>
 
-    <h3>Porcentagem total de votos válidos : <b>{{number_format($porcentagem,2,',','.') }} %</b></h3>
-    <h3>Total de Colaboradores na Empresa : <b>{{ $contcola }}</b></h3>
+    @if($porcentagem < 50)
+        <h2>Porcentagem total de votos válidos : <b>{{number_format($porcentagem,2,',','.') }} %</b></h2>
+    @endif
+    @if($porcentagem > 1)
+        <h2>Porcentagem total de votos válidos : <b style="color: #3b9143;">{{number_format($porcentagem,2,',','.') }} %.</b> A votação ja pode ser encerrada.</h2>
+    @endif
+
     <hr>
-    <h3>Total e Listagem de colaboradores que ja votaram : <b>{{ $cont }}</b></h3>
-    </div>
+    <h2>Total de Colaboradores na Empresa : <b>{{ $contcola }}</b></h2>
+    <h2>Total e Listagem de colaboradores que ja votaram : <b>{{ $cont }}</b></h2>
+</div>
     <div class="content">
         <div class="container">
             @foreach($pessoas as $pessoa)
