@@ -25,11 +25,13 @@ Route::post('login', [AuthController::class, 'login'])->name('login');
 Route::get('login', [AuthController::class, 'index']);
 
 
+
 #votacao
 Route::middleware('auth')->group(function(){
     Route::get('', [VotacaoController::class, 'index'])->name('votacao');
     Route::get('votacao/store/{id}',[VotacaoController::class, 'store'])->name('salvar');
     Route::get('votacao/final',[VotacaoController::class, 'index'])->name('final');
+    Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 });
 
 

@@ -16,6 +16,14 @@
 </nav>
 
 <div class="container">
+    <div class="pull-right">
+        <form action="{{ route('logout') }}" method="POST">
+            <div class="col-xs-6 text-center col-xs-offset-6">
+                {{ csrf_field() }}
+                <button onclick="if(!confirm('Deseja sair do sistema?')){return false}" class="btn btn-danger" type="submit" class="button">Sair</button>
+            </div>
+        </form>
+    </div>
 
     <h1>Processo Eleitoral - Cipa</h1>
         <h2>Gestão - 2022/2023</h2>
@@ -24,6 +32,14 @@
         <h3>Obrigado pela participação, {{ $user->name }} !</h3>
         <br>
         <h4>Seu voto foi salvo com sucesso!</h4>
+
+        <?php
+        $Object = new DateTime();
+        $Object->setTimezone(new DateTimeZone('America/Sao_Paulo'));
+        $DateAndTime = $Object->format("d-m-Y h:i:s a");
+        ?>
+        <h4>{{ $DateAndTime }}</h4>
+
         <h4></h4>
     <hr>
 
