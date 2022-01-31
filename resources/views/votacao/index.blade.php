@@ -26,6 +26,14 @@
         <br>
 @if($usuario == true)
     <h3>ERRO ! Você ja votou,obrigado pela participação.</h3>
+    <hr>
+    <form>
+        <a href="{{route('imprimir') }}" class="btn btn-success" value="Salvar Comprovante">Salvar Comprovante</a>
+    </form>
+    <form action="{{ route('logout') }}" method="POST">
+        {{ csrf_field() }}
+        <button onclick="if(!confirm('Deseja sair do sistema?')){return false}" class="btn btn-danger" type="submit" class="button">Sair</button>
+    </form>
 
 @endif
 @if($usuario == false)

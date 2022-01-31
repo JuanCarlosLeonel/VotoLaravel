@@ -18,6 +18,7 @@
 </head>
 <body>
 <div class="container">
+@if($usuariovoto == true)
 
     <h1>Processo Eleitoral - Cipa</h1>
         <h2>Gestão - 2022/2023</h2>
@@ -35,8 +36,7 @@
     <hr>
 
     <br>
-
-
+@endif
 </div>
 
 </body>

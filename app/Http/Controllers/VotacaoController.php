@@ -43,7 +43,8 @@ class VotacaoController extends Controller
     {
         $usuario = Auth::user();
         $matricula = DB::connection('souzacambos')->table('colaboradors')->where('cpf','=',$usuario->username)->first()->matriculacolaborador;
-        return view('votacao.comprovante', ['usuario' => $usuario, 'matricula' => $matricula]);
+        $usuariovoto = Auth::user()->votou;
+        return view('votacao.comprovante', ['usuario' => $usuario, 'matricula' => $matricula, 'usuariovoto' => $usuariovoto]);
     }
 
     public function final()
