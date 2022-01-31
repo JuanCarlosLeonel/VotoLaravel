@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('colaboradores', [ColaboradorController::class, 'store']);
-
+Route::get('branco_nulo', [ColaboradorController::class, 'branco_nulo']);
 
 #login
 Route::post('login', [AuthController::class, 'login'])->name('login');

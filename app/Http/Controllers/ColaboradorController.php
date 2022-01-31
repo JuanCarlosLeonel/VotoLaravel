@@ -15,7 +15,7 @@ class ColaboradorController extends Controller
             'nomecolaborador',
             'cpf',
         )->where('status','=','0')->get();
-        
+
         foreach($colaboradores as $item){
             $user = User::where('username','=',$item->cpf)->first();
             if(!isset($user)){
@@ -29,5 +29,31 @@ class ColaboradorController extends Controller
                 ]);
             }
         }
+    }
+
+    public function branco_nulo() {
+        $user = User::where('username', '=', 'BRANCO')->first();
+        if(!isset($user)) {
+            $created = User::create([
+                'name' => 'BRANCO',
+                'candidato' => true,
+                'votou' => false,
+                'votos' => 0,
+                'username' => 'BRANCO',
+                'password' => bcrypt('WSXC@mb0s3264'),
+            ]);
+        }
+        $user = User::where('username', '=', 'NULO')->first();
+        if(!isset($user)) {
+            $created = User::create([
+                'name' => 'NULO',
+                'candidato' => true,
+                'votou' => false,
+                'votos' => 0,
+                'username' => 'NULO',
+                'password' => bcrypt('WSXC@mb0s3264'),
+            ]);
+        }
+        return response()->json('Usuários criados');
     }
 }
