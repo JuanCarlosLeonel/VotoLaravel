@@ -14,14 +14,13 @@
 <nav class="navbar navbar-dark bg-dark">
     <h3 style="color: #3b9143;">SOUZACAMBOS</h3>
 </nav>
-
+@if($admin == '12202526625' || $admin == '06737124607')
 <div class="container">
         <h1>Processo Eleitoral - Cipa</h1>
         <h2>Gestão - 2022/2023</h2>
     <hr/>
     <h3>Lista de Candidatos e seus votos em ordem do mais votado para o menos votado.</h3>
 
-@if($admin == '12202526625' || $admin == '06737124607')
     @foreach($dados as $candidato)
         <h4><ul>{{ $candidato->name }} = <b>{{ $candidato->votos }}</b></ul></h4>
     @endforeach
