@@ -25,7 +25,7 @@
         <h3>Bem vindo, {{ $pessoa }}</h3>
         <br>
 @if($usuario == true)
-    <h3>Você ja votou,obrigado pela participação.</h3>
+    <h3>ERRO ! Você ja votou,obrigado pela participação.</h3>
 
 @endif
 @if($usuario == false)
@@ -37,13 +37,13 @@
         <label for="candidato">CANDIDATOS :</label><hr>
         @foreach($candidatos as $candidato)
         <ul>@if ($candidato->name == 'BRANCO')
-                <a onclick="if(!confirm('Deseja confirmar seu voto?')){return false}" href="{{ route('salvar',$candidato->id) }}" class="btn btn-default" >{{ $candidato->name }}</a>
+                <a style="font-size: 15px" onclick="if(!confirm('Deseja confirmar seu voto em {{ $candidato->name }} ?')){return false}" href="{{ route('salvar',$candidato->id) }}" class="btn btn-default" >{{ $candidato->name }}</a>
 
             @elseif ($candidato->name == 'NULO')
-                <a onclick="if(!confirm('Deseja confirmar seu voto?')){return false}" href="{{ route('salvar',$candidato->id) }}" class="btn btn-dark">{{ $candidato->name }}</a>
+                <a style="font-size: 15px" onclick="if(!confirm('Deseja confirmar seu voto em {{ $candidato->name }} ?')){return false}" href="{{ route('salvar',$candidato->id) }}" class="btn btn-dark">{{ $candidato->name }}</a>
 
             @elseif ($candidato->name != 'NULO' and $candidato->name != 'BRANCO')
-                <a onclick="if(!confirm('Deseja confirmar seu voto?')){return false}" href="{{ route('salvar',$candidato->id) }}" class="btn btn-success">{{ $candidato->name }}</a>
+                <a style="font-size: 15px" onclick="if(!confirm('Deseja confirmar seu voto em {{ $candidato->name }} ?')){return false}" href="{{ route('salvar',$candidato->id) }}" class="btn btn-success">{{ $candidato->name }}</a>
             @endif
         </ul>
         @endforeach

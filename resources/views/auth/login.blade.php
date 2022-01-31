@@ -25,16 +25,16 @@
     <form action="{{ route('login') }}" method="POST">
         @csrf
       <div class="form-group">
-        <label for="username">CPF</label>
+        <label style="font-size: 15px" for="username">CPF</label>
         <input type="text" id="username" name="username" class="form-control" placeholder="Digite aqui seu CPF para entrar">
       </div>
 
       <div class="form-group">
-        <label for="password">SENHA</label>
+        <label  style="font-size: 15px" for="password">SENHA</label>
         <input type="password" id="password" name="password" class="form-control" placeholder="Sua senha é seu número de matrícula">
       </div>
 
-      <button type="submit" class="btn btn-success">Entrar</button>
+      <button style="font-size: 20px" type="submit" class="btn btn-success">Entrar</button>
     </form>
 
 </div>

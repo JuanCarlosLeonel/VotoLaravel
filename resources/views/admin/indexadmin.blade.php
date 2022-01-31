@@ -30,7 +30,7 @@
     @if($porcentagem < 50)
         <h2>Porcentagem total de votos válidos : <b>{{number_format($porcentagem,2,',','.') }} %</b></h2>
     @endif
-    @if($porcentagem > 1)
+    @if($porcentagem > 50)
         <h2>Porcentagem total de votos válidos : <b style="color: #3b9143;">{{number_format($porcentagem,2,',','.') }} %.</b> A votação ja pode ser encerrada.</h2>
     @endif
 
