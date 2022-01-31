@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Mockery\Generator\StringManipulation\Pass\Pass;
 
@@ -35,8 +36,20 @@ class VotacaoController extends Controller
             $user->votou = true;
             $user->save();
 
-            return view('votacao.final', ['user' => $user]);
+            return redirect()->route('final');
         }
+    }
+    public function imprimir()
+    {
+        $usuario = Auth::user();
+        $matricula = DB::connection('souzacambos')->table('colaboradors')->where('cpf','=',$usuario->username)->first()->matriculacolaborador;
+        return view('votacao.comprovante', ['usuario' => $usuario, 'matricula' => $matricula]);
+    }
+
+    public function final()
+    {
+        $pessoa = Auth::user()->name;
+        return view('votacao.final', ['pessoa' => $pessoa]);
     }
 
 }

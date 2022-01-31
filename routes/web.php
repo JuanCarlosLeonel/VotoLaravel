@@ -30,8 +30,9 @@ Route::get('login', [AuthController::class, 'index']);
 Route::middleware('auth')->group(function(){
     Route::get('', [VotacaoController::class, 'index'])->name('votacao');
     Route::get('votacao/store/{id}',[VotacaoController::class, 'store'])->name('salvar');
-    Route::get('votacao/final',[VotacaoController::class, 'index'])->name('final');
+    Route::get('votacao/final',[VotacaoController::class, 'final'])->name('final');
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('imprimir', [VotacaoController::class, 'imprimir'])->name('imprimir');
 });
 
 

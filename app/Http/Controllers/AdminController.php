@@ -21,7 +21,7 @@ class AdminController extends Controller
         $cont = $contador->count('id');
 
         $contadorcola = User::select('id');
-        $contcola = $contadorcola->count('id');
+        $contcola = $contadorcola->count('id') -2;
 
         $porcentagem = ($cont * 100) / $contcola;
 
