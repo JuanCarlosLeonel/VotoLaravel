@@ -26,7 +26,7 @@
         @csrf
       <div class="form-group">
         <label style="font-size: 15px" for="username">CPF</label>
-        <input type="text" id="username" name="username" class="form-control" placeholder="Digite aqui seu CPF para entrar">
+        <input type="number" id="username" name="username" class="form-control" placeholder="Digite aqui seu CPF para entrar">
       </div>
 
       <div class="form-group">
