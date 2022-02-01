@@ -25,7 +25,7 @@
         <h3>Bem vindo, {{ $pessoa }}</h3>
         <br>
 @if($usuario == true)
-    <h3>ERRO ! Você ja votou,obrigado pela participação.</h3>
+    <h3>Você ja votou,obrigado pela participação.</h3>
     <hr>
     <form>
         <a href="{{route('imprimir') }}" class="btn btn-success" value="Salvar Comprovante">Salvar Comprovante</a>

@@ -27,9 +27,10 @@ class AuthController extends Controller
             ])) {
                 return redirect()->route('votacao');
             }else{
-                return redirect()->route('login');
+                return redirect()->route('login')->with('msg', 'CPF OU SENHA INCORRETOS,TENTE NOVAMENTE.');
             }
         }
+        return redirect()->route('login')->with('msg', 'CPF OU SENHA INCORRETOS,TENTE NOVAMENTE.');
     }
 
     public function logout(){

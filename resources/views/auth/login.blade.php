@@ -14,6 +14,12 @@
 <nav class="navbar navbar-dark bg-dark">
     <h3 style="color: #3b9143;">SOUZACAMBOS</h3>
 </nav>
+<style>
+    .msg{color: #b10d0d;
+         background-color: #f7b9b9;
+         font-size: 15px;
+         border:1px solid red; }
+</style>
 
 <div class="container">
 
@@ -21,6 +27,10 @@
         <h2>Gestão - 2022/2023</h2>
 
     <hr />
+
+    @if (session('msg'))
+    <p class="msg">{{ session('msg') }}</p>
+    @endif
 
     <form action="{{ route('login') }}" method="POST">
         @csrf
