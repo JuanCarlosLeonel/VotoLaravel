@@ -18,7 +18,11 @@
     .msg{color: #b10d0d;
          background-color: #f7b9b9;
          font-size: 15px;
-         border:1px solid red; }
+         border:1px solid red;
+         width: 100%;
+         margin-bottom: 0;
+         text-align: center;
+         padding: 5px; }
 </style>
 
 <div class="container">
