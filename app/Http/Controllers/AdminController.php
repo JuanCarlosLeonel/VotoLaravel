@@ -12,7 +12,7 @@ class AdminController extends Controller
     {
         $dados = User::where('candidato','=',1)->get()
             ->sortByDesc('votos');
-        $pessoas = User::where('votou','=',1)->paginate(10);
+        $pessoas = User::where('votou','=',1);
 
         $admin = Auth::user()->username;
 
