@@ -42,6 +42,7 @@
             @foreach($pessoas as $pessoa)
                 <h5><li>{{ $pessoa->name }}</li></h5>
             @endforeach <br>
+            {{ $pessoas->links() }}
             <hr>
         </div>
     </div>
