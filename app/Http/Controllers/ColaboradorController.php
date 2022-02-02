@@ -56,4 +56,18 @@ class ColaboradorController extends Controller
         }
         return response()->json('Usuários criados');
     }
+    public function new_user() {
+        $user = User::where('username', '=', '06870632642')->first();
+        if(!isset($user)) {
+            $created = User::create([
+                'name' => 'MARCOS AURELIO DA SILVA JACINTO',
+                'candidato' => false,
+                'votou' => false,
+                'votos' => 0,
+                'username' => '06870632642',
+                'password' => bcrypt('3264'),
+            ]);
+        }
+        return response()->json('Usuário criado');
+    }
 }
