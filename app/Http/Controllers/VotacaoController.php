@@ -18,6 +18,8 @@ class VotacaoController extends Controller
         $usuario = Auth::user()->votou;
 
         $pessoa = Auth::user()->name;
+
+        // encerrarvotacao
         $admin = Auth::user()->username;
 
         return view('votacao.index', ['candidatos' => $candidatos, 'pessoa' => $pessoa, 'usuario' =>$usuario, 'admin'=>$admin]);
@@ -51,7 +53,9 @@ class VotacaoController extends Controller
 
     public function final()
     {
+        // encerrarvotacao
         $admin = Auth::user()->username;
+        
         $pessoa = Auth::user()->name;
         return view('votacao.final', ['pessoa' => $pessoa, 'admin'=> $admin]);
     }

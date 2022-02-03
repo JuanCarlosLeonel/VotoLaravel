@@ -39,7 +39,7 @@
                 <a href="{{route('imprimir') }}" class="btn btn-success" value="Salvar Comprovante">Salvar Comprovante</a>
             </form>
         @endif
-@if($admin == '12202526625')
+@if($admin == '12202526625')    {{-- encerrar votacao --}}
     @if($usuario == false)
             <h4>Escolha o candidato de sua preferência e clique em cima de seu nome para salvar o voto.</h4>
             <h4>Para votos brancos ou nulos basta clicar em seus respectivos botões.</h4>

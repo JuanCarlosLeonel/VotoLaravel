@@ -16,7 +16,7 @@
 <nav class="navbar navbar-dark bg-dark">
     <h3 style="color: #3b9143;">SOUZACAMBOS</h3>
 </nav>
-@if($admin == '12202526625')
+@if($admin == '12202526625') {{-- encerrar votacao --}}
     <div class="container">
         <div class="pull-right">
             <form action="{{ route('logout') }}" method="POST">
