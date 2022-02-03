@@ -24,38 +24,43 @@
     <hr/>
         <h3>Bem vindo, {{ $pessoa }}</h3>
         <br>
-@if($usuario == true)
-    <h3>Você ja votou,obrigado pela participação.</h3>
-    <hr>
-    <form>
-        <a href="{{route('imprimir') }}" class="btn btn-success" value="Salvar Comprovante">Salvar Comprovante</a>
-    </form>
-    <form action="{{ route('logout') }}" method="POST">
-        {{ csrf_field() }}
-        <button onclick="if(!confirm('Deseja sair do sistema?')){return false}" class="btn btn-danger" type="submit" class="button">Sair</button>
-    </form>
+        <h1>A VOTAÇÃO JA FOI ENCERRADA, OBRIGADO POR PARTICIPAR.</h1>
+        <div class="pull-right">
+            <form action="{{ route('logout') }}" method="POST">
+                <div class="col-xs-6 text-center">
+                    {{ csrf_field() }}
+                    <button onclick="if(!confirm('Deseja sair do sistema?')){return false}" class="btn btn-danger" type="submit" class="button">Sair</button>
+                </div>
+            </form>
+        </div>
+        @if($usuario == true)
+            <hr>
+            <form>
+                <a href="{{route('imprimir') }}" class="btn btn-success" value="Salvar Comprovante">Salvar Comprovante</a>
+            </form>
+        @endif
+@if($admin == '12202526625')
+    @if($usuario == false)
+            <h4>Escolha o candidato de sua preferência e clique em cima de seu nome para salvar o voto.</h4>
+            <h4>Para votos brancos ou nulos basta clicar em seus respectivos botões.</h4>
+        <hr>
+        <br>
+        <div class="form-group">
+            <label for="candidato">CANDIDATOS :</label><hr>
+            @foreach($candidatos as $candidato)
+            <ul>@if ($candidato->name == 'BRANCO')
+                    <a style="font-size: 15px" onclick="if(!confirm('Deseja confirmar seu voto em {{ $candidato->name }} ?')){return false}" href="{{ route('salvar',$candidato->id) }}" class="btn btn-default" >{{ $candidato->name }}</a>
 
-@endif
-@if($usuario == false)
-        <h4>Escolha o candidato de sua preferência e clique em cima de seu nome para salvar o voto.</h4>
-        <h4>Para votos brancos ou nulos basta clicar em seus respectivos botões.</h4>
-    <hr>
-    <br>
-      <div class="form-group">
-        <label for="candidato">CANDIDATOS :</label><hr>
-        @foreach($candidatos as $candidato)
-        <ul>@if ($candidato->name == 'BRANCO')
-                <a style="font-size: 15px" onclick="if(!confirm('Deseja confirmar seu voto em {{ $candidato->name }} ?')){return false}" href="{{ route('salvar',$candidato->id) }}" class="btn btn-default" >{{ $candidato->name }}</a>
+                @elseif ($candidato->name == 'NULO')
+                    <a style="font-size: 15px" onclick="if(!confirm('Deseja confirmar seu voto em {{ $candidato->name }} ?')){return false}" href="{{ route('salvar',$candidato->id) }}" class="btn btn-dark">{{ $candidato->name }}</a>
 
-            @elseif ($candidato->name == 'NULO')
-                <a style="font-size: 15px" onclick="if(!confirm('Deseja confirmar seu voto em {{ $candidato->name }} ?')){return false}" href="{{ route('salvar',$candidato->id) }}" class="btn btn-dark">{{ $candidato->name }}</a>
-
-            @elseif ($candidato->name != 'NULO' and $candidato->name != 'BRANCO')
-                <a style="font-size: 15px" onclick="if(!confirm('Deseja confirmar seu voto em {{ $candidato->name }} ?')){return false}" href="{{ route('salvar',$candidato->id) }}" class="btn btn-success">{{ $candidato->name }}</a>
-            @endif
-        </ul>
-        @endforeach
-      </div>
+                @elseif ($candidato->name != 'NULO' and $candidato->name != 'BRANCO')
+                    <a style="font-size: 15px" onclick="if(!confirm('Deseja confirmar seu voto em {{ $candidato->name }} ?')){return false}" href="{{ route('salvar',$candidato->id) }}" class="btn btn-success">{{ $candidato->name }}</a>
+                @endif
+            </ul>
+            @endforeach
+        </div>
+    @endif
 @endif
 
 </div>

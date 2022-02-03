@@ -18,20 +18,22 @@ class VotacaoController extends Controller
         $usuario = Auth::user()->votou;
 
         $pessoa = Auth::user()->name;
+        $admin = Auth::user()->username;
 
-        return view('votacao.index', ['candidatos' => $candidatos, 'pessoa' => $pessoa, 'usuario' =>$usuario]);
+        return view('votacao.index', ['candidatos' => $candidatos, 'pessoa' => $pessoa, 'usuario' =>$usuario, 'admin'=>$admin]);
     }
 
     public function store($id)
     {
         $pessoa = User::find($id);
+        // logica candidato salvar voto e incremento
         if(isset($pessoa) and $pessoa->candidato){
             if (Auth::user()->votou){
                 return redirect()->route('votacao');
             }
             $pessoa->votos += 1;
             $pessoa->save();
-
+        // logica colaborador salvar voto
             $user = User::find(Auth::user()->id);
             $user->votou = true;
             $user->save();
@@ -49,8 +51,9 @@ class VotacaoController extends Controller
 
     public function final()
     {
+        $admin = Auth::user()->username;
         $pessoa = Auth::user()->name;
-        return view('votacao.final', ['pessoa' => $pessoa]);
+        return view('votacao.final', ['pessoa' => $pessoa, 'admin'=> $admin]);
     }
 
 }
